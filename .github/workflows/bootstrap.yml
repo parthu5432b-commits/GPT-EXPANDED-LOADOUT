@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'loadout-source.zip'
+      - 'Loadout-1.8.0-Java-Lambda-Fix.zip'
   workflow_dispatch:
 
 permissions:
@@ -27,10 +27,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f loadout-source.zip || { echo 'loadout-source.zip is missing from the repository root.'; exit 1; }
+          test -f Loadout-1.8.0-Java-Lambda-Fix.zip || { echo 'loadout-source.zip is missing from the repository root.'; exit 1; }
           mkdir -p "$RUNNER_TEMP/loadout-source"
-          unzip -tq loadout-source.zip
-          unzip -q loadout-source.zip -d "$RUNNER_TEMP/loadout-source"
+          unzip -tq Loadout-1.8.0-Java-Lambda-Fix.zip
+          unzip -q Loadout-1.8.0-Java-Lambda-Fix.zip -d "$RUNNER_TEMP/loadout-source"
           test -f "$RUNNER_TEMP/loadout-source/package.json"
           test -f "$RUNNER_TEMP/loadout-source/native/android/LoadoutCorePlugin.java"
           rsync -a "$RUNNER_TEMP/loadout-source/" "$GITHUB_WORKSPACE/"
